@@ -14,13 +14,13 @@ namespace WishListTests
             // Assert Index.cshtml is in the Views/Home folder
             Assert.True(File.Exists(filePath), "`Index.cshtml` was not found in the `Views" + Path.DirectorySeparatorChar + "Item` folder.");
 
-            string file;
+            string file; 
             using (var streamReader = new StreamReader(filePath))
             {
                 file = streamReader.ReadToEnd();
             }
             var pattern = @"@model\s*?List\s*?<\s*?WishList[.]Models[.]Item\s*?>";
-            var rgx = new Regex(pattern);
+            var rgx = new Regex(pattern);                        
             Assert.True(rgx.IsMatch(file), "`Index.cshtml` was found, but does not appear to have a model of `List<Item>`.");
             pattern = @"(?i)<\s*?h1\s*?>\s*?wishlist\s*?</\s*?h1\s*?>";
             rgx = new Regex(pattern);
